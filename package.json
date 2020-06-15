@@ -10,7 +10,9 @@
     "docker:list": "docker ps -as",
     "docker:kill": "docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)",
     "docker:img": "docker images",
-    "docker:clear": "docker rmi $(docker images -a -q) -f"
+    "docker:clear": "docker rmi $(docker images -a -q) -f",
+    "dc:up": "docker-compose up",
+    "dc:prod": "docker-compose --file=docker-prod.yml up"
   },
   "author": "",
   "license": "ISC"
