@@ -1,0 +1,17 @@
+{
+  "name": "laravel-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docker:up": "docker run --env WEB_DOCUMENT_ROOT=/app/public --name foo --publish 8000:80 --volume $PWD:/app -it webdevops/php-apache:7.4-alpine",
+    "docker:prod": "docker build --tag foo.img . && docker run --name foo --publish 80:80 -it foo.img",
+    "docker:shell": "docker exec -it foo /bin/bash",
+    "docker:list": "docker ps -as",
+    "docker:kill": "docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)",
+    "docker:img": "docker images",
+    "docker:clear": "docker rmi $(docker images -a -q) -f"
+  },
+  "author": "",
+  "license": "ISC"
+}
