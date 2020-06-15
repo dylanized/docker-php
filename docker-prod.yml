@@ -1,0 +1,10 @@
+version: "3.2"
+services:
+  tc.prod.img:
+    build:
+      context: '.'
+    ports:
+      - "${PORT}:80"
+    container_name: foo.prod
+    environment:
+    - WEB_DOCUMENT_ROOT=/app/public

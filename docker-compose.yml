@@ -1,0 +1,11 @@
+version: "3.2"
+services:
+  tc.dev.img:
+    image: webdevops/php-apache:7.2-alpine
+    ports:
+      - "${PORT}:80"
+    volumes:
+      - ./:/app
+    container_name: foo.dev
+    environment:
+    - WEB_DOCUMENT_ROOT=/app/public
