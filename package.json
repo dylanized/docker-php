@@ -4,16 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "## DOCKER RUNNING ##": "",
     "docker:up": "docker run --env WEB_DOCUMENT_ROOT=/app/public --name foo.dev --publish 8000:80 --volume $PWD:/app -it webdevops/php-apache:7.4-alpine",
     "docker:prod": "docker build --tag foo.prod.img . && docker run --name foo.prod --publish 80:80 -it foo.prod.img",
     "docker:shell": "docker exec -it foo.dev /bin/bash",
+    "## DOCKER MANAGEMENT ##": "",
     "docker:list": "docker ps -as",
     "docker:kill": "docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)",
     "docker:img": "docker images",
     "docker:clear": "docker rmi $(docker images -a -q) -f",
+    "## DOCKER COMPOSE ##": "",
     "dc:up": "docker-compose up",
-    "dc:prod": "docker-compose --file=docker-prod.yml up"
+    "dc:prod": "docker-compose --file=docker-prod.yml up",
+    "## TEST ##": "",
+    "test": "mocha tests",
+    "test:staging": "URL=http://staging.somedomain.com/ mocha tests",
+    "test:prod": "URL=https://somedomain.com mocha tests"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^8.0.1",
+    "unit.js": "^2.1.1"
+  }
 }
